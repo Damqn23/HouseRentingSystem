@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HouseRentingSystem.Core.Contract.House
+namespace HouseRentingSystem.Core.Contract
 {
-	public interface IHouseService
-	{
-		Task<IEnumerable<HouseIndexServiceModel>> LastThreeHouses();
-	}
+    public interface IHouseService
+    {
+        Task<IEnumerable<HouseIndexServiceModel>> LastThreeHouses();
+    }
 }

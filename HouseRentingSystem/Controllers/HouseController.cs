@@ -30,7 +30,8 @@ namespace HouseRentingSystem.Controllers
 		[HttpGet]
 		public IActionResult Add()
 		{
-			return View();
+			var model = new HouseFormModel();
+			return View(model);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Add(HouseFormModel model)

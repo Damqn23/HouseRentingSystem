@@ -16,8 +16,8 @@ namespace HouseRentingSystem.Infrastucture.Constants
         public const int HouseAddressMinLength = 30;
         public const int HouseAddressMaxLength = 150;
 
-        public const int HouseDescriptionMinLength = 500;
-        public const int HouseDescriptionMaxLength = 50;
+        public const int HouseDescriptionMinLength = 50;
+        public const int HouseDescriptionMaxLength = 500;
 
         public const string HouseRentingPriceMin = "0";
         public const string HouseRentingPriceMax = "2000";

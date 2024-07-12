@@ -1,4 +1,5 @@
-﻿using HouseRentingSystem.Core.Models.Home;
+﻿using HouseRentingSystem.Core.Enumerations;
+using HouseRentingSystem.Core.Models.Home;
 using HouseRentingSystem.Core.Models.House;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,14 @@ namespace HouseRentingSystem.Core.Contract
         Task<bool> CategoryExistsAsync(int categoryId);
 
         Task<int> CreateAsync(HouseFormModel model,int agentId);
+
+        Task<HouseQueryServiceModel> AllAsync(
+            string? category = null,
+            string? searchTerm = null,
+            HouseSorting sorting = HouseSorting.Newest,
+            int currentPage = 1,
+            int housesPerPage = 1);
+
+        Task<IEnumerable<string>> AllCategoriesNamesAsync();
     }
 }

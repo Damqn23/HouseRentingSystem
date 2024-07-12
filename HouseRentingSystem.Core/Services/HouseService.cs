@@ -1,6 +1,8 @@
 ﻿using HouseRentingSystem.Core.Contract;
 using HouseRentingSystem.Core.Models.Home;
+using HouseRentingSystem.Core.Models.House;
 using HouseRentingSystem.Infrastucture.Data.Common;
+using HouseRentingSystem.Infrastucture.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,43 @@ namespace HouseRentingSystem.Core.Services
         {
             repository = _repository;
         }
+
+        public async Task<IEnumerable<HouseCategoryServiceModel>> AllCategoriesAsync()
+        {
+            return await repository.AllReadOnly<Category>()
+                .Select(c => new HouseCategoryServiceModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                })
+                .ToListAsync();
+        }
+
+        public async Task<bool> CategoryExistsAsync(int categoryId)
+        {
+            return await repository.AllReadOnly<Category>()
+                .AnyAsync(c => c.Id == categoryId);
+        }
+
+        public async Task<int> CreateAsync(HouseFormModel model, int agentId)
+        {
+            House house = new House()
+            {
+                Address = model.Address,
+                AgentId = agentId,
+                CategoryId = model.CategoryId,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                PricePerMouth = model.PricePerMonth,
+                Title = model.Title,
+            };
+
+            await repository.AddAsync(house);
+            await repository.SaveChangesAsync();
+
+            return house.Id;
+        }
+
         public async Task<IEnumerable<HouseIndexServiceModel>> LastThreeHousesAsync()
         {
             return await repository

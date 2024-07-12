@@ -1,4 +1,5 @@
 ﻿using HouseRentingSystem.Core.Models.Home;
+using HouseRentingSystem.Core.Models.House;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,11 @@ namespace HouseRentingSystem.Core.Contract
     public interface IHouseService
     {
         Task<IEnumerable<HouseIndexServiceModel>> LastThreeHousesAsync();
+
+        Task<IEnumerable<HouseCategoryServiceModel>> AllCategoriesAsync();
+
+        Task<bool> CategoryExistsAsync(int categoryId);
+
+        Task<int> CreateAsync(HouseFormModel model,int agentId);
     }
 }

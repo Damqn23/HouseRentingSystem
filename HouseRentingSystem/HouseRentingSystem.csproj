@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\_HousePartial.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.29" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.29" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.29" />
@@ -21,10 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HouseRentingSystem.Core\HouseRentingSystem.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Shared\_HousePartial.cshtml" />
   </ItemGroup>
 
 </Project>

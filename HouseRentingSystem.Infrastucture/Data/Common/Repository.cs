@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HouseRentingSystem.Infrastucture.Data.Common
 {
-	public class Repository : IRepository
+    public class Repository : IRepository
 	{
 		private readonly DbContext context;
 
@@ -40,5 +40,10 @@ namespace HouseRentingSystem.Infrastucture.Data.Common
 		{
 			return await context.SaveChangesAsync();
 		}
-	}
+
+        public async Task<T?> GetByIdAsync<T>(object id) where T : class
+        {
+			return await DbSet<T>().FindAsync(id);
+        }
+    }
 }

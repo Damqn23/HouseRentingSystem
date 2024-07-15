@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseRentingSystem.Core.Contract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HouseRentingSystem.Core.Models.House
 {
-	public class HouseDetailsViewModel
+	public class HouseDetailsViewModel : IHouseModel
 	{
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;

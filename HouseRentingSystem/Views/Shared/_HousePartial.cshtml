@@ -13,7 +13,7 @@ div class="col-md-4">
         <h6>(@(Model.IsRented ? "Rented" : "Not Rented"))</h6>
         <br />
         <a asp-area="" asp-controller="House" asp-action="Details" asp-route-id="@Model.Id"
-           class="btn btn-success">Details</a>
+        asp-route-information="@Model.GetInformation()" class="btn btn-success">Details</a>
         @if (this.User.Identity.IsAuthenticated)
         {
             <a asp-area="" asp-controller="House" asp-action="Edit" asp-route-id="@Model.Id"

@@ -1,8 +1,8 @@
 ﻿using HouseRentingSystem.Core.Contract;
 using HouseRentingSystem.Core.Services;
-using HouseRentingSystem.Infrastucture.Data;
 using HouseRentingSystem.Infrastucture.Data.Common;
 using HouseRentingSystem.Infrastucture.Data.Models;
+using HouseRentingSystem.Infrastucture.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,12 +37,14 @@ namespace Microsoft.Extensions.DependencyInjection
             services
                 .AddDefaultIdentity<ApplicationUser>(options =>
                 {
+                    options.User.RequireUniqueEmail = true;
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireDigit = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<HouseRentingDbContext>();
 
             return services;

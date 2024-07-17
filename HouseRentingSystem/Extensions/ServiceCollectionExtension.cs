@@ -2,6 +2,7 @@
 using HouseRentingSystem.Core.Services;
 using HouseRentingSystem.Infrastucture.Data;
 using HouseRentingSystem.Infrastucture.Data.Common;
+using HouseRentingSystem.Infrastucture.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
         {
             services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddDefaultIdentity<ApplicationUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireNonAlphanumeric = false;

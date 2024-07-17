@@ -18,7 +18,8 @@ div class="col-md-4">
         asp-route-information="@Model.GetInformation()" class="btn btn-success">Details</a>
         @if (this.User.Identity.IsAuthenticated)
         {
-            if (await houseService.HasAgentWithIdAsync(Model.Id,User.Id()))
+            if (await houseService.HasAgentWithIdAsync(Model.Id,User.Id())
+            || User.IsAdmin())
             {
                 <a asp-area="" asp-controller="House" asp-action="Edit" asp-route-id="@Model.Id"
                    class="btn btn-warning">Edit</a>
@@ -27,7 +28,7 @@ div class="col-md-4">
             }
 
             <p></p>
-            @if (!Model.IsRented && (await agentService.ExistByIdAsync(User.Id())) == false)
+            @if (!Model.IsRented && ((await agentService.ExistByIdAsync(User.Id())) == false || User.IsAdmin()))
             {
                 <form class="input-group-sm" asp-controller="House"
                       asp-area="" asp-action="Rent" asp-route-id="@Model.Id" method="post">

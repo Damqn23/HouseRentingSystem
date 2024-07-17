@@ -59,7 +59,7 @@ namespace HouseRentingSystem.Infrastucture.Data.SeedDb
                 FirstName = "Guest",
                 LastName = "Guestov"
             };
-            GuestUser.PasswordHash = hasher.HashPassword(AgentUser, "guest123");
+            GuestUser.PasswordHash = hasher.HashPassword(GuestUser, "guest123");
 
             AdminUser = new ApplicationUser()
             {
@@ -71,7 +71,7 @@ namespace HouseRentingSystem.Infrastucture.Data.SeedDb
                 FirstName = "Admin",
                 LastName = "Adminov"
             };
-			AdminUser.PasswordHash = hasher.HashPassword(AgentUser, "admin123");
+			AdminUser.PasswordHash = hasher.HashPassword(AdminUser, "admin123");
         }
 
         private void SeedAgent()

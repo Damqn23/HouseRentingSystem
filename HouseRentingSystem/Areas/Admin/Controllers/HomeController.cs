@@ -8,5 +8,7 @@ namespace HouseRentingSystem.Areas.Admin.Controllers
 		{
 			return View();
 		}
+
+		
 	}
 }

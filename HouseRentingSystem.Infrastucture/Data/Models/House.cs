@@ -51,5 +51,8 @@ namespace HouseRentingSystem.Infrastucture.Data.Models
         public Category Category { get; set; } = null!;
         
         public Agent Agent { get; set; } = null!;
+
+        [ForeignKey(nameof(RenterId))]
+        public ApplicationUser? Renter { get; set; }
     }
 }
